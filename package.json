@@ -1,0 +1,22 @@
+{
+  "name": "template-php-lambda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "api:create": "AWS_PROFILE=claudia claudia create --name php-lambda --region ap-southeast-1 --source app --handler handler.handle --config claudia-api.json --version latest --timeout 30 --memory 256 --runtime nodejs8.10 --set-env NODE_ENV=staging",
+    "api:update": "AWS_PROFILE=claudia claudia update --source app --config claudia-api.json --version latest --timeout 30 --memory 256 --runtime nodejs8.10 --set-env NODE_ENV=staging",
+    "api:destroy": "AWS_PROFILE=claudia claudia destroy --config claudia-api.json"
+  },
+  "keywords": [
+    "php",
+    "lambda",
+    "serverless"
+  ],
+  "author": "CodeBanBan",
+  "license": "MIT",
+  "dependencies": {
+    "claudia": "^5.6.0"
+  }
+}
