@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "api:create": "AWS_PROFILE=claudia claudia create --name php-lambda --region ap-southeast-1 --source app --handler handler.handle --config claudia-api.json --version latest --timeout 30 --memory 256 --runtime nodejs8.10 --set-env NODE_ENV=staging",
+    "func:create": "AWS_PROFILE=claudia claudia create --name php-lambda --region ap-southeast-1 --source app --handler handler.handle --config claudia-func.json --version latest --timeout 30 --memory 256 --runtime nodejs8.10 --set-env NODE_ENV=staging",
+    "func:update": "AWS_PROFILE=claudia claudia update --source app --config claudia-func.json --version latest --timeout 30 --memory 256 --runtime nodejs8.10 --set-env NODE_ENV=staging",
+    "func:destroy": "AWS_PROFILE=claudia claudia destroy --config claudia-func.json",
+    "api:create": "AWS_PROFILE=claudia claudia create --name php-lambda --region ap-southeast-1 --deploy-proxy-api --source app --handler handler.handle --config claudia-api.json --version latest --timeout 30 --memory 256 --runtime nodejs8.10 --set-env NODE_ENV=staging",
     "api:update": "AWS_PROFILE=claudia claudia update --source app --config claudia-api.json --version latest --timeout 30 --memory 256 --runtime nodejs8.10 --set-env NODE_ENV=staging",
     "api:destroy": "AWS_PROFILE=claudia claudia destroy --config claudia-api.json"
   },
